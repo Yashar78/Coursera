@@ -71,31 +71,28 @@ end
 h1 = sigmoid([ones(m, 1) X] * Theta1');
 h2 = sigmoid([ones(m, 1) h1] * Theta2');
 
-
-
-	J = 0 ;
+J = 0 ;
 for i=1:m % compute the cost associated with every observation
-	for k=1:num_labels
-		J = J .+ ((-Y(i,k))*log(h2(i,k)')-(1.-Y(i,k))*log(1.-(h2(i,k)'))); 
-
-	end
-	
-
+   for k=1:num_labels
+	J = J .+ ((-Y(i,k))*log(h2(i,k)')-(1.-Y(i,k))*log(1.-(h2(i,k)'))); 
+   end
 end 
 J = J./m;
 
+regCost = 0;
 
 
 
+for j=1:hidden_layer_size
+  for k=2:input_layer_size
+  	rgCost = regCost .+ Theta1(j,k).
+  end
+end
 
 
-
-
-
-
-
-
-
+%input_layer_size
+%hidden_layer_size
+%num_labels
 % -------------------------------------------------------------
 
 % =========================================================================
