@@ -21,18 +21,27 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+%fprintf('%i',size(X))
+
+m = size(X, 1);
+
 X = [ones(m, 1) X];
+%for i=1:m
+%x = X(1,:); % a single observation.
 
 a1 = X;
+z2 = a1 * Theta1'; % * a1';
 
-z2 = Theta1 * a1';
-a2= sigmoid(z2);
-mm = size(a2, 1);
-a2 = [ones(mm,1); a2];
+a2 = sigmoid(z2);
 
-z3 = sigmoid(Theta2 * a2)';
+a2 = [ones(m,1) a2];
 
-[U, p ] = max(z3, [], 2);
+z3 = a2 * Theta2'; % * a2))';
+a3 = sigmoid(z3);
+
+[U, p] = max(z3, [], 2);
+
+%end
 
 
 % =========================================================================
