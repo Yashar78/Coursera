@@ -81,14 +81,23 @@ J = J./m;
 
 regCost = 0;
 
-
-
 for j=1:hidden_layer_size
   for k=2:input_layer_size
-  	rgCost = regCost .+ Theta1(j,k).
+  	regCost = regCost .+ Theta1(j,k).^2;
   end
 end
 
+
+
+for j=1:num_labels
+  for k=2:hidden_layer_size
+  	regCost = regCost .+ Theta2(j,k).^2;
+  end
+end
+
+%fprintf('regCost is: %f', regCost);
+
+J = J .+ regCost.*(lambda./(2.*m));
 
 %input_layer_size
 %hidden_layer_size
