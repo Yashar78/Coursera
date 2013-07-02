@@ -127,27 +127,14 @@ for i=1:m % this is the main loop over the training examples
 %   delta2 = (Theta2'*delta3)(2,end).*sigmoidGradient(z2);
    
    delta2 = (Theta2'*delta3).*sigmoidGradient([0;z2]);
-   %Step 4
-   temp1 = delta2(2:end) * a1';
-   %fprintf('size of capDelta1 %i\n', size(capDelta1));
-   
-   %fprintf('size of temp1 %i\n', size(temp1));
-   capDelta1 = capDelta1 + temp1;
-   capDelta2 = capDelta2 + delta3 * a2'; 
+   %Step 4 
+   capDelta1 = capDelta1 .+ delta2 * a1';
+   capDelta2 = capDelta2 .+ delta3 * a2'; 
   
 end 
 %Step 5
 Theta1_grad = capDelta1./m;
 Theta2_grad = capDelta2./m;
-
-tempTheta1 = Theta1;
-tempTheta1(:,1)=0;
-
-tempTheta2 = Theta2;
-tempTheta2(:,1)=0;
-
-Theta1_grad = Theta1_grad + (lambda./m).*tempTheta1;
-Theta2_grad = Theta2_grad + (lambda./m).*tempTheta2;
 
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
