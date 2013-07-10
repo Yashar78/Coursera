@@ -15,8 +15,8 @@ sim = 0;
 %               sigma
 %
 %
-
-
+coef = -1./(2.*(sigma.^2));
+sim = exp(coef .* sum((x1 - x2).^2));
 
 
 

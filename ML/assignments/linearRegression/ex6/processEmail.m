@@ -99,6 +99,22 @@ while ~isempty(email_contents)
 
 
 
+%num_of_words = length(email_contents);
+num_of_vocabs = length(vocabList);
+%for i=1:num_of_words
+ %  w = email_contents{i};
+ %  index = -1;
+   j = 1;
+   while(j<=num_of_vocabs)
+     if (strcmp(str,vocabList{j})==1)
+        word_indices = [word_indices j];
+        break;
+     end
+     j = j+1;
+   end
+
+%end
+
 
 
 
