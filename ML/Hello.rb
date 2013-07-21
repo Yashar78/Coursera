@@ -1,1 +1,1 @@
-class name is master
+class name is changed
