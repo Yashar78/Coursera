@@ -1,0 +1,7 @@
+package week4
+
+object listWS {
+  
+  val n= new Nil                                  //> n  : week4.Nil[Nothing] = week4.Nil@35549f94
+  
+}

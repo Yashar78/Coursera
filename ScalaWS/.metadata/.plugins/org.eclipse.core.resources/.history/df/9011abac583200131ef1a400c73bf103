@@ -1,0 +1,12 @@
+package week3
+
+import week2.Ratonal
+
+object Hello {
+
+  
+  def main(args: Array[String]) = println("Hello World.")
+  
+  val r = new Rational(1,2)
+  println(r)
+}

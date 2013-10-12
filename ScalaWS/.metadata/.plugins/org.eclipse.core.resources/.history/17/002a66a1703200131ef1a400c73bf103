@@ -1,0 +1,10 @@
+import week3.Rational
+
+object Hello {
+
+  
+  def main(args: Array[String]) = println("Hello World.")
+  
+  val r = new Rational(1,2)
+  println(r)
+}

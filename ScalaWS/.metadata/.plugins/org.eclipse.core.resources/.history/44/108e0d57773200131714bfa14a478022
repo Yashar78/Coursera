@@ -1,0 +1,12 @@
+package week4
+
+object listWS {
+  
+  val n= new Nil                                  //> n  : week4.Nil[Nothing] = week4.Nil@d8d9850
+  def nth[T](n: Int, l:List[T]): T =
+	  if (n==0) l.head
+	  else if (n < 0 ) throw new IndexOutOfBoundsException()
+	  else nth(n-1, l.tail)                           //> nth: [T](n: Int, l: week4.List[T])T
+ 
+ val list = new Cons(1, new Cons(2, new Cons(3, new Nil))) 
+}

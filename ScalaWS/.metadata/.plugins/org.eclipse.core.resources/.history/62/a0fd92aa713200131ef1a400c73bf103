@@ -1,0 +1,13 @@
+package week3
+
+object scratch {
+  println("Welcome to the Scala worksheet")
+  
+  def error(msg: String) = throw new Error(msg)
+  
+  //error("hello")
+  val x= null
+  
+  //val z: Int = null
+  if (true) null else scala.None
+}

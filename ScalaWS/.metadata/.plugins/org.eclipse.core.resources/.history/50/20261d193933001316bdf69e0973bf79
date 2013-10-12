@@ -1,0 +1,76 @@
+package objsets
+
+
+
+object testSheet {
+  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+  
+   val set1 = new Empty                           //> set1  : objsets.Empty = .
+    val set2 = set1.incl(new Tweet("a", "a body", 15))
+                                                  //> set2  : objsets.TweetSet = {.User: a
+                                                  //| Text: a body [15].}
+    val set3 = set2.incl(new Tweet("b", "b body", 25))
+                                                  //> set3  : objsets.TweetSet = {.User: a
+                                                  //| Text: a body [15]{.User: b
+                                                  //| Text: b body [25].}}
+    val c = new Tweet("rahim", "c body", 15)      //> c  : objsets.Tweet = User: rahim
+                                                  //| Text: c body [15]
+    val d = new Tweet("rahims", "d body", 12 )    //> d  : objsets.Tweet = User: rahims
+                                                  //| Text: d body [12]
+    val set4c = set3.incl(c)                      //> set4c  : objsets.TweetSet = {.User: a
+                                                  //| Text: a body [15]{.User: b
+                                                  //| Text: b body [25]{.User: rahim
+                                                  //| Text: c body [15].}}}
+    val set4d = set3.incl(d)                      //> set4d  : objsets.TweetSet = {.User: a
+                                                  //| Text: a body [15]{.User: b
+                                                  //| Text: b body [25]{.User: rahims
+                                                  //| Text: d body [12].}}}
+    val set5 = set4c.incl(d)                      //> set5  : objsets.TweetSet = {.User: a
+                                                  //| Text: a body [15]{.User: b
+                                                  //| Text: b body [25]{.User: rahim
+                                                  //| Text: c body [15]{.User: rahims
+                                                  //| Text: d body [12].}}}}
+    
+    def asSet(tweets: TweetSet): Set[Tweet] = {
+    var res = Set[Tweet]()
+    tweets.foreach(res += _)
+    res
+  }                                               //> asSet: (tweets: objsets.TweetSet)Set[objsets.Tweet]
+
+  def size(set: TweetSet): Int = asSet(set).size  //> size: (set: objsets.TweetSet)Int
+	
+	size(set5.filter(tw => tw.user == "rahim"))
+                                                  //> res0: Int = 1
+  size(set5.filter(tw => tw.retweets == 20))      //> res1: Int = 0
+  
+  
+	size(set4c.union(set4d))                  //> res2: Int = 3
+  
+   set4d.mostRetweeted                            //> res3: objsets.Tweet = User: b
+                                                  //| Text: b body [25]
+                                                   
+   set4c.foreach(x => println(x.retweets))        //> 15
+                                                  //| 25
+                                                  //| 15
+   set4c.findMaxRetweet                           //> res4: Int = 25
+   
+   
+   val ll = set5.descendingByRetweet              //> ll  : objsets.TweetList = objsets.Cons@380e28b9
+   ll.foreach(x => println(x ))                   //> User: b
+                                                  //| Text: b body [25]
+                                                  //| User: rahim
+                                                  //| Text: c body [15]
+                                                  //| User: a
+                                                  //| Text: a body [15]
+                                                  //| User: rahims
+                                                  //| Text: d body [12]
+  
+  val s = "hello andssroid mmm"                   //> s  : String = hello andssroid mmm
+  val g = List("android", "Android", "galaxy", "Galaxy", "nexus", "Nexus")
+                                                  //> g  : List[String] = List(android, Android, galaxy, Galaxy, nexus, Nexus)
+  s.contains(g)                                   //> res5: Boolean = false
+  //s.contains(g.exists(p))
+  //TweetReader.allTweets.
+  g.exists(x => s.contains(x))                    //> res6: Boolean = false
+  val x = new TweetSet(2, Empty, Empty)
+}

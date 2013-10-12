@@ -1,0 +1,7 @@
+package week4
+
+object listWS {
+  
+  val n= new Nil
+  val c = new Cons[Int](1, n)
+}

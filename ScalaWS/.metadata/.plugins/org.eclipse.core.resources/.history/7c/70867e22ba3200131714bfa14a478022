@@ -1,0 +1,45 @@
+package objsets
+
+import scala.collection.parallel.Exists
+
+object testSheet {
+  println("Welcome to the Scala worksheet")
+  
+   val set1 = new Empty
+    val set2 = set1.incl(new Tweet("a", "a body", 15))
+    val set3 = set2.incl(new Tweet("b", "b body", 25))
+    val c = new Tweet("rahim", "c body", 15)
+    val d = new Tweet("rahims", "d body", 12 )
+    val set4c = set3.incl(c)
+    val set4d = set3.incl(d)
+    val set5 = set4c.incl(d)
+    
+    def asSet(tweets: TweetSet): Set[Tweet] = {
+    var res = Set[Tweet]()
+    tweets.foreach(res += _)
+    res
+  }
+
+  def size(set: TweetSet): Int = asSet(set).size
+	
+	size(set5.filter(tw => tw.user == "rahim"))
+  size(set5.filter(tw => tw.retweets == 20))
+  
+  
+	size(set4c.union(set4d))
+  
+   set4d.mostRetweeted
+                                                   
+   set4c.foreach(x => println(x.retweets))
+   set4c.findMaxRetweet
+   
+   
+   val ll = set5.descendingByRetweet
+   ll.foreach(x => println(x ))
+  
+  val s = "hello android mmm"
+  google.exists()
+  //TweetReader.allTweets.
+  
+  
+}

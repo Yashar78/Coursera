@@ -1,0 +1,9 @@
+package week3
+
+import week2.Rational
+
+
+
+object Hello {
+	def main(args: Array[String]) = println("Hello World.")
+}

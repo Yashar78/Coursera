@@ -1,0 +1,8 @@
+package week4
+
+object listWS {
+  
+  val n= new Nil
+  def nth(T)(n: T, l:List[T]): T = 
+  
+}
