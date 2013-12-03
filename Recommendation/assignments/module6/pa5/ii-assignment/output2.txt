@@ -1,0 +1,5 @@
+105,0.2746,Back to the Future (1985)
+1891,0.2681,Star Wars: Episode V - The Empire Strikes Back (1980)
+4327,0.2511,Charlie's Angels (2000)
+11,0.2364,Star Wars: Episode IV - A New Hope (1977)
+1892,0.2179,Star Wars: Episode VI - Return of the Jedi (1983)

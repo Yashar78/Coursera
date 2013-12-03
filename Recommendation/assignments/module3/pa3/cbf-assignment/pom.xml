@@ -10,7 +10,7 @@
   <name>MOOC CBF assignment</name>
 
   <properties>
-    <lenskit.version>2.0</lenskit.version>
+    <lenskit.version>2.0.2</lenskit.version>
   </properties>
 
   <repositories>
