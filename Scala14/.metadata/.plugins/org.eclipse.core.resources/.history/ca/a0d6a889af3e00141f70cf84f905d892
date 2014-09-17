@@ -1,0 +1,6 @@
+package week01
+
+object session {
+  2 * 3
+  def sqrt(x: Int): Int = x * x
+}

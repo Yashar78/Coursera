@@ -1,0 +1,5 @@
+package week01
+
+object session {
+  2 * 3                                           //> Welcome to the Scala worksheet
+}
