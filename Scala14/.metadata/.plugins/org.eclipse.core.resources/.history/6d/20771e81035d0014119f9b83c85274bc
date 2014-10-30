@@ -1,0 +1,7 @@
+package week6
+
+object pairs {
+
+val n = 7                                         //> n  : Int = 7
+
+}

@@ -1,0 +1,26 @@
+package week6
+
+object polynomials {
+  class Poly(val terms:Map[Int, Double]) {
+  	def + (other: Poly) = new Poly( terms ++ (other.terms map adjust ))
+  	override def toString = (for((exp,coef) <- terms.toList.sorted.reverse) yield coef+"X^"+exp) mkString "+"
+  	
+  	def adjust(term: (Int, Double)): (Int, Double) = {
+  		val (exp, coef) = term
+  		terms get exp match {
+  			case Some(coef1) => exp -> (coef1 + coef)
+  			case None => exp -> coef
+  		}
+  	}
+  }
+  
+  
+  val m1 = Map("a"->1, "b"->3)                    //> m1  : scala.collection.immutable.Map[String,Int] = Map(a -> 1, b -> 3)
+  val m2 = Map("c"->1, "b"->2)                    //> m2  : scala.collection.immutable.Map[String,Int] = Map(c -> 1, b -> 2)
+  
+  m1 ++ m2                                        //> res0: scala.collection.immutable.Map[String,Int] = Map(a -> 1, b -> 2, c -> 
+                                                  //| 1)
+  val v1 = new Poly(Map(1->2, 3 -> 4))            //> v1  : week6.polynomials.Poly = 4.0X^3+2.0X^1
+  v1.toString                                     //> res1: String = 4.0X^3+2.0X^1
+  (for((e,t) <- m1) yield  t+"X^"+e) mkString "+" //> res2: String = 1X^a+3X^b
+}

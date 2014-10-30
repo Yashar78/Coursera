@@ -1,0 +1,31 @@
+
+import java.math.*
+object currying {
+
+def mapReduce(f: Int => Int, combine:(Int, Int)=> Int, zero:Int)(a:Int, b:Int): Int=
+	if (a > b) zero
+	else combine(f(a), mapReduce(f,combine,zero)(a+1,b))
+  def product(f: Int => Int)(a: Int, b:Int): Int = mapReduce(x => x, (x,y)=> x* y , 1)(a,b)
+  product(x=>x)(1, 5)
+  def fact(n: Int): Int =
+  	product(x =>x)(1,n)
+	fact(5)
+}
+
+object exercise {
+val toleeance = 0.0001
+def isCloseEnough(x: Double, y:Double)=
+	abs((x-y)/x)/x < toleeance
+
+def fixedPoint(f: Double => Double)(firstGuess: Double)={
+	def iterate(guess: Double): Double ={
+		val next = f(guess)
+		if (isCloseEnough(guess, next)) next
+		else
+		iterate(next)
+	}
+	iterate(firstGuess)§
+}
+
+
+}

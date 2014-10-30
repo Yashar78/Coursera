@@ -1,0 +1,8 @@
+package week6
+
+object pairs {
+
+val n = 7                                         //> n  : Int = 7
+ (1 until n) map (i => 
+ 		(1 until i) map ( j  => (i,j)))
+}

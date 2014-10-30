@@ -1,0 +1,21 @@
+package week6
+
+object maps {
+  val capitalOfCountry = Map("US" -> "WDC", "Iran" -> "Tehran")
+                                                  //> capitalOfCountry  : scala.collection.immutable.Map[String,String] = Map(US ->
+                                                  //|  WDC, Iran -> Tehran)
+  capitalOfCountry("Hasan")                       //> java.util.NoSuchElementException: key not found: Hasan
+                                                  //| 	at scala.collection.MapLike$class.default(MapLike.scala:228)
+                                                  //| 	at scala.collection.AbstractMap.default(Map.scala:58)
+                                                  //| 	at scala.collection.MapLike$class.apply(MapLike.scala:141)
+                                                  //| 	at scala.collection.AbstractMap.apply(Map.scala:58)
+                                                  //| 	at week6.maps$$anonfun$main$1.apply$mcV$sp(week6.maps.scala:5)
+                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$$anonfun$$exe
+                                                  //| cute$1.apply$mcV$sp(WorksheetSupport.scala:76)
+                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.redirected(W
+                                                  //| orksheetSupport.scala:65)
+                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.$execute(Wor
+                                                  //| ksheetSupport.scala:75)
+                                                  //| 	at week6.maps$.main(week6.maps.scala:3)
+                                                  //| 	at week6.maps.main(week6.maps.scala)
+}

@@ -1,0 +1,19 @@
+package week6
+
+object pairs {
+
+	def isPrime(n: Int): Boolean =
+		//!((2 until n) map (x => n %x) exists (y => y==0))
+    (2 until n) forall (x => n%x!=0)
+val n = 7
+ ((1 until n) map (i =>
+ 		(1 until i) map ( j  => (i,j)))).flatten
+   (1 until n) flatMap (i =>
+ 		(1 until i) map ( j  => (i,j))) filter (pair =>
+ 		isPrime(pair._1 + pair._2))
+ 		
+	def scalarProduct(xs: Vector[Double], ys: Vector[Double]): Double =
+		for {
+		p <- xs zip ys }yield sum
+ 
+}

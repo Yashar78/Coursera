@@ -1,0 +1,46 @@
+package week6
+
+object polynomials {
+  class Poly2(val terms:Map[Int, Double]) {
+  	//def + (other: Poly) = new Poly( terms ++ (other.terms map adjust ))
+  	def + (other: Poly) = new Poly( other.terms foldLeft terms )(addTerm))
+  	
+  	override def toString = (for((exp,coef) <- terms.toList.sorted.reverse) yield coef+"X^"+exp) mkString "+"
+  	def addTerm(terms: Map[Int, Double], term:(Int,Double)): Map[Int, Double] = {
+  		val (exp, coef) = term 
+  		terms + (exp -> (coef+terms(exp)))
+  	}
+  	def adjust(term: (Int, Double)): (Int, Double) = {
+  		val (exp, coef) = term
+  		terms get exp match {
+  			case Some(coef1) => exp -> (coef1 + coef)
+  			case None => exp -> coef
+  		}
+  	}
+  }
+  
+   class Poly(terms0:Map[Int, Double]) {
+   def this(bindings:(Int,Double)*) = this(bindings.toMap)
+ 
+   val terms = terms0 withDefaultValue 0.0
+  	def + (other: Poly) = new Poly( terms ++ (other.terms map adjust ))
+  	override def toString = (for((exp,coef) <- terms.toList.sorted.reverse) yield coef+"X^"+exp) mkString "+"
+  	
+  	def adjust(term: (Int, Double)): (Int, Double) = {
+  		val (exp, coef) = term
+  		exp -> (coef + terms(exp))
+  	}
+  }
+   
+  val m1 = Map("a"->1, "b"->3)
+  val m2 = Map("c"->1, "b"->2)
+  
+  m1 ++ m2
+  val v1 = new Poly(1->2, 3 -> 4)
+  val v2 = new Poly(1->2, 2 -> 4)
+  
+  
+  v1 + v2
+  v1.toString
+  (for((e,t) <- m1) yield  t+"X^"+e) mkString "+"
+}

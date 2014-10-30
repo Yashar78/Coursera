@@ -56,7 +56,4 @@ object Main {
     else
       countChange(money, coins.tail)+countChange(money-coins.head, coins)
     }
-  
-  
-
 }

@@ -1,0 +1,25 @@
+package week6
+
+
+
+object test {
+	val x = Array(1,2,3,44)
+	x map ( x => 2 *x )
+	val s = "Hello World"
+	s filter (c => c.isUpper)
+	
+	s exists (c => c.isUpper)
+	s forall (c => c.isUpper)
+	
+	val pairs = List(1,2,3) zip s
+	pairs.unzip
+	
+	s.flatMap(c => List('.',c))
+	(1 to 10)
+	val M = 6
+	val N = 5
+	(1 to M) flatMap (x => List(x) zip (1 to N) flatMap (y => y))
+	
+	
+	
+}

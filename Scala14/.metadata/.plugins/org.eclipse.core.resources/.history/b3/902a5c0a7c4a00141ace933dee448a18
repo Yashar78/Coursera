@@ -1,0 +1,77 @@
+import math.abs
+
+object exercise {
+
+val tolerance = 0.0001                            //> tolerance  : Double = 1.0E-4
+def isCloseEnough(x: Double, y:Double)=
+	abs((x-y)/x)/x < tolerance                //> isCloseEnough: (x: Double, y: Double)Boolean
+
+def fixedPoint(f: Double => Double)(firstGuess: Double)={
+	def iterate(guess: Double): Double ={
+		val next = f(guess)
+		println("guess="+guess)
+		if (isCloseEnough(guess, next)) next
+		else
+		iterate(next)
+	}
+	iterate(firstGuess)
+}                                                 //> fixedPoint: (f: Double => Double)(firstGuess: Double)Double
+fixedPoint(x => 1+x/2)(1)                         //> guess=1.0
+                                                  //| guess=1.5
+                                                  //| guess=1.75
+                                                  //| guess=1.875
+                                                  //| guess=1.9375
+                                                  //| guess=1.96875
+                                                  //| guess=1.984375
+                                                  //| guess=1.9921875
+                                                  //| guess=1.99609375
+                                                  //| guess=1.998046875
+                                                  //| guess=1.9990234375
+                                                  //| guess=1.99951171875
+                                                  //| res0: Double = 1.999755859375
+
+
+def sqrt(x: Double)=
+fixedPoint(y => y /x)(1.0)                        //> sqrt: (x: Double)Double
+
+sqrt(2)                                           //> guess=1.0
+                                                  //| guess=0.5
+                                                  //| guess=0.25
+                                                  //| guess=0.125
+                                                  //| guess=0.0625
+                                                  //| guess=0.03125
+                                                  //| guess=0.015625
+                                                  //| guess=0.0078125
+                                                  //| guess=0.00390625
+                                                  //| guess=0.001953125
+                                                  //| guess=9.765625E-4
+                                                  //| guess=4.8828125E-4
+                                                  //| guess=2.44140625E-4
+                                                  //| guess=1.220703125E-4
+                                                  //| guess=6.103515625E-5
+                                                  //| guess=3.0517578125E-5
+                                                  //| guess=1.52587890625E-5
+                                                  //| guess=7.62939453125E-6
+                                                  //| guess=3.814697265625E-6
+                                                  //| guess=1.9073486328125E-6
+                                                  //| guess=9.5367431640625E-7
+                                                  //| guess=4.76837158203125E-7
+                                                  //| guess=2.384185791015625E-7
+                                                  //| guess=1.1920928955078125E-7
+                                                  //| guess=5.9604644775390625E-8
+                                                  //| guess=2.9802322387695312E-8
+                                                  //| guess=1.4901161193847656E-8
+                                                  //| guess=7.450580596923828E-9
+                                                  //| guess=3.725290298461914E-9
+                                                  //| guess=1.862645149230957E-9
+                                                  //| guess=9.313225746154785E-10
+                                                  //| guess=4.6566128730773926E-10
+                                                  //| guess=2.3283064365386963E-10
+                                                  //| guess=1.1641532182693481E-10
+                                                  //| guess=5.820766091346741E-11
+                                                  //| guess=2.9103830456733704E-11
+                                                  //| guess=1.4551915228366852E-11
+                                                  //| guess=7.275957614183426E
+                                                  //| Output exceeds cutoff limit.\
+
+}

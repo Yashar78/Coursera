@@ -1,0 +1,9 @@
+package week6
+
+object sorts {
+  
+  val fruit = List("apple", "orange", "cucumber", "pear", "pineapple")
+                                                  //> fruit  : List[String] = List(apple, orange, cucumber, pear, pineapple)
+  
+  fruit sortWith (_.length < _.length)            //> res0: List[String] = List(pear, apple, orange, cucumber, pineapple)
+}

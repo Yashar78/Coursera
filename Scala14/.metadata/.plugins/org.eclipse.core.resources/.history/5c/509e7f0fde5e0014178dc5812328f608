@@ -1,0 +1,8 @@
+package week6
+
+object maps {
+  val capitalOfCountry = Map("US" -> "WDC", "Iran" -> "Tehran")
+  capitalOfCountry("Hasan")
+                                                  //> capitalOfCountry  : scala.collection.immutable.Map[String,String] = Map(US ->
+                                                  //|  WDC, Iran -> Tehran)
+}

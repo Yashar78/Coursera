@@ -1,0 +1,14 @@
+package week6
+
+object maps {
+  val capitalOfCountry = Map("US" -> "WDC", "Iran" -> "Tehran")
+ // capitalOfCountry("Hasan")
+  capitalOfCountry get "hasan"
+  capitalOfCountry get "US"
+  
+  def showCapital( country: String ) = capitalOfCountry.get(country) match {
+  	case some(capital) => capital
+  	case None => "No Country"
+  
+  }
+}

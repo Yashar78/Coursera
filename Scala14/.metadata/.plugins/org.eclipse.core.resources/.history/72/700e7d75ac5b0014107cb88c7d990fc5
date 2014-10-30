@@ -1,0 +1,93 @@
+package patmat
+
+object test {
+ //times(List('h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd'))
+ 
+
+//  val engToDeu = Map(("d",1), ("c",2), ("r",2))
+//engToDeu.contains("e")
+//val numbers = collection.mutable.Map(1 -> 2)
+//numbers.get(1)
+//numbers.getOrElseUpdate(2, 3)
+//numbers
+//numbers += (4 -> 1)
+
+val l = List('h', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd')
+
+
+val words = List("one", "two", "one", "three", "four", "two", "one")
+
+def isort(xs:List[(Char, Int)]): List[(Char, Int)] = xs match{
+ 	case List() => List()
+ 	case y :: ys => insert(y,isort(ys))
+ }
+ 
+ def insert(x: (Char, Int), xs:List[(Char, Int)]):List[(Char, Int)] = xs  match {
+ 	case List() =>  List(x)
+ 	//case y :: ys => if (y < x ) y :: insert(x, ys) else x :: y :: ys
+
+ 	case y :: ys => if ( x._2 <= y._2 ) x :: xs else y :: insert(x,ys)
+ }
+
+  abstract class CodeTree
+  case class Fork(left: CodeTree, right: CodeTree, chars: List[Char], weight: Int) extends CodeTree
+  case class Leaf(char: Char, weight: Int) extends CodeTree
+val l2 = isort(List(('t', 2), ('e', 1), ('x', 3)))
+l2.map(x => new  Leaf(x._1,x._2))
+l2.length
+
+
+
+	def insertTree(x: Fork, xs:List[CodeTree]):List[CodeTree] = xs  match {
+	 	case List() =>  List(x)
+	 	case Leaf(c,w) :: ys => if ( x.weight <= w ) x :: xs else new Leaf(c,w) :: insertTree(x,ys)
+	 	case Fork(lt,rt,cx,w) :: ys => if ( x.weight <= w ) x :: xs else new Fork(lt,rt,cx,w) :: insertTree(x,ys)
+	 	
+	}
+	
+
+  def combine(trees: List[CodeTree]): List[CodeTree] = trees match {
+    case List() => trees
+    case x :: List() => trees
+    //case x :: y :: xs =>   new Fork(x,y, x.chars ::: y.chars, x.weight+y.weight) :: xs
+    case Leaf(cl,wl) :: Leaf(cr,wr) :: xs =>   insertTree(new Fork(new Leaf(cl,wl), new Leaf(cr,wr), List(cl,cr), wl+wr), xs)
+    case Leaf(cl,wl) :: Fork(lt,rt,cx,wt) :: xs =>  insertTree( new Fork(new Leaf(cl,wl), new Fork(lt,rt,cx,wt), cl :: cx, wl+wt), xs)
+    case Fork(lt,rt,cx,wt) :: Leaf(cr,wr) :: xs =>   insertTree(new Fork(new Fork(lt,rt,cx,wt), new Leaf(cr,wr), cr :: cx, wr+wt) , xs)
+    case Fork(llt,lrt,lcx,lwt) :: Fork(rlt,rrt,rcx,rwt) :: xs => insertTree( new Fork(new Fork(llt,lrt,lcx,lwt), new Fork(rlt,rrt,rcx,rwt), lcx ::: rcx, lwt+rwt),xs)
+    
+    
+  }
+  
+  val ll = List(Leaf('a', 2), Leaf('b', 2), Leaf('c', 3), Leaf('d', 10))
+  val l12 = combine(ll)
+     combine(combine(l12))
+  
+    def until(sing: List[CodeTree] => Boolean, comb: List[CodeTree] => List[CodeTree])(trees: List[CodeTree]): List[CodeTree] = ???
+		  null
+		 
+/*
+words.groupBy(w => w).mapValues(_.size).toList
+
+  def makeOrderedLeafList(freqs: List[(Char, Int)]): List[Leaf] =
+  	def loop(fs: List[(Char, Int)], acc List[Leaf]): List[Leaf] = fs match{
+  		case List => acc
+  		case x :: xs =>
+  	}
+
+  	
+  	
+  */
+  
+ List(('a',List(1,2,3))).toMap('a')
+  
+  type Bit = Int
+  type CodeTable = List[(Char, List[Bit])]
+  def codeBits[T](table: CodeTable)(char: Char): List[Bit] =
+   ???
+    
+ val ttt = List(('a', List(2)), ('b', List(1,2)))
+ val m = ttt.toMap
+ m('a')
+  
+                                                  
+}

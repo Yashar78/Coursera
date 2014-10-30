@@ -1,0 +1,9 @@
+package week6
+
+object sorts {
+                                                  //> Welcome to the Scala worksheet
+  
+  val fruit = List("apple", "orange", "cucumber", "pear", "pineapple")
+  
+  fruit sortWith (_.length < _.length)
+}
